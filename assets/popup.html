@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PsycMon</title>
+	<link type="text/css" rel="stylesheet" href="lib/materialize.min.css"  media="screen,projection"/>
+	<style>
+		.pop-container {
+			min-width: 500px;
+			background-image: linear-gradient(#7b1fa2,#f06292);
+			border-radius: 30px
+		}
+		.sel-mar {
+			margin: 2px
+		}
+		#bdi-msg {
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body class="pop-container">
+	<div id="home-content">
+		<div class="white-text center-align">
+			<h4><i> PsycMon </i></h4>
+			<h6> <b>Need help with your</b> </h6>
+			<h5>"<b><u>MENTAL HEALTH</u></b>"?? </h5>
+			<h6> Well you are at the right place!!</h6>
+			<h6 id="bdi-sc-disp"></h6>
+			<h6 id="madrs-sc-disp"></h6>
+			<hr />
+			<div class="row">
+				<div class='col s4'>
+					<button class="waves-effect waves-light btn pink darken-3" id="help">
+						<b>Need HELP??</b>
+					</button>
+				</div>
+				<div class='col s4'>
+					<button class="waves-effect waves-light btn pink darken-3" id="bdi_test">
+						<b>BDI Test-></b>
+					</button>
+				</div>
+				<div class='col s4'>
+					<button class="waves-effect waves-light btn pink darken-3" id="madrs_test">
+						<b>MADRS Test-></b>
+					</button>
+				</div>
+			</div>
+			<button class="waves-effect waves-light btn pink darken-3 sel-mar" id="download">
+				<b>Download Report</b>
+			</button>
+		</div>
+	</div>
+	<div id="help-content" style="display: none">
+		<div class="container" >
+			<h5 id="country" class="white-text"></h5>
+			<ol id="count-helpline" class="white-text">
+			</ol>
+			<h5 class="white-text"> More Info below links </h5>
+			<ol class="white-text">
+				<li>
+					<a class="lime-text"
+					href="https://portal.cca.edu/thriving/counseling/international-mental-health-support/" 
+					target="_blank">
+						<h6>CCA Portal</h6>
+					</a>
+				</li>
+				<li>
+					<a href="https://unitedgmh.org/mental-health-support" target="_blank" class="lime-text">
+					<h6>United for Global Mental Health</h6>
+					</a>
+				</li>
+			</ol>
+			<div class="right-align">
+				<button class="waves-effect waves-light btn-large pink darken-3" id="help-home">
+					<b>Go Home</b>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div id="bdi-content" style="display: none">
+		<div class="container white-text" id="bdi-con">
+			<h4>Answer questions based on how you feel</h4>
+			<div class="row">
+				<h6 class="col s8">
+					How sad do you feel?
+				</h6>
+				<div class="col s4 m1">
+					<select id="bdi-1" class="browser-default sel-mar">
+						<option value="0" selected>0 - I do not feel sad.</option>
+						<option value="1" >1 - I feel sad </option>
+						<option value="2" >2 - I am sad all the time and I can't snap out of it. </option>
+						<option value="3" >3 - I am so sad and unhappy that I can't stand it. </option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					How do you feel about future?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-2" class="browser-default sel-mar">
+						<option value="0" selected>0 - I am not particularly discouraged about the future.</option>
+						<option value="1" >1 - I feel discouraged about the future. </option>
+						<option value="2" >2 - I feel I have nothing to look forward to. </option>
+						<option value="3" >3 - I feel the future is hopeless and that things cannot improve</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you feel like a failure?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-3" class="browser-default sel-mar">
+						<option value="0" selected>0 - I do not feel like a failure.</option>
+						<option value="1" >1 - I feel I have failed more than the average person.</option>
+						<option value="2" >2 - As I look back on my life, all I can see is a lot of failures.</option>
+						<option value="3" >3 - I feel I am a complete failure as a person.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you feel satisfied by your work?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-4" class="browser-default sel-mar">
+						<option value="0" selected>0 - I get as much satisfaction out of things as I used to</option>
+						<option value="1" >1 - I don't enjoy things the way I used to.</option>
+						<option value="2" >2 - I don't get real satisfaction out of anything anymore.</option>
+						<option value="3" >3 - I am dissatisfied or bored with everything.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you feel guilty of anything?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-5" class="browser-default sel-mar">
+						<option value="0" selected>0 - I don't feel particularly guilty </option>
+						<option value="1" >1 - I feel guilty a good part of the time</option>
+						<option value="2" >2 - I feel quite guilty most of the time</option>
+						<option value="3" >3 - I feel guilty all of the time</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you feel you are being punished?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-6" class="browser-default sel-mar">
+						<option value="0" selected>0 - I don't feel I am being punished</option>
+						<option value="1" >1 - I feel I may be punished</option>
+						<option value="2" >2 - I expect to be punished</option>
+						<option value="3" >3 - I feel I am being punished</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you feel disappointed in yourself
+				</h6>
+				<div class="col s4">
+					<select id="bdi-7" class="browser-default sel-mar">
+						<option value="0" selected>0 - I don't feel disappointed in myself.</option>
+						<option value="1" >1 - I am disappointed in myself.</option>
+						<option value="2" >2 - I am disgusted with myself.</option>
+						<option value="3" >3 - I hate myself.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you blame yourself for everything?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-8" class="browser-default sel-mar">
+						<option value="0" selected>0 - I don't feel I am any worse than anybody else.</option>
+						<option value="1" >1 - I am critical of myself for my weaknesses or mistakes.</option>
+						<option value="2" >2 - I blame myself all the time for my faults.</option>
+						<option value="3" >3 - I blame myself for everything bad that happens.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you have suicidal thoughts?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-9" class="browser-default sel-mar">
+						<option value="0" selected>0 - I don't have any thoughts of killing myself.</option>
+						<option value="1" >1 - I have thoughts of killing myself, but I would not carry them out.</option>
+						<option value="2" >2 - I would like to kill myself.</option>
+						<option value="3" >3 - I would kill myself if I had the chance.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you find yourself crying often?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-10" class="browser-default sel-mar">
+						<option value="0" selected>0 - I don't cry any more than usual.</option>
+						<option value="1" >1 - I cry more now than I used to.</option>
+						<option value="2" >2 - I cry all the time now.</option>
+						<option value="3" >3 - I used to be able to cry, but now I can't cry even though I want to.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you feel irritated?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-11" class="browser-default sel-mar">
+						<option value="0" selected>0 - I am no more irritated by things than I ever was</option>
+						<option value="1" >1 - I am slightly more irritated now than usual.</option>
+						<option value="2" >2 - I am quite annoyed or irritated a good deal of the time.</option>
+						<option value="3" >3 - I feel irritated all the time.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Are you interested in socialization?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-12" class="browser-default sel-mar">
+						<option value="0" selected>0 - I have not lost interest in other people.</option>
+						<option value="1" >1 - I am less interested in other people than I used to be.</option>
+						<option value="2" >2 - I have lost most of my interest in other people.</option>
+						<option value="3" >3 - I have lost all of my interest in other people.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Are you able to take decisions?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-13" class="browser-default sel-mar">
+						<option value="0" selected>0 - I make decisions about as well as I ever could. </option>
+						<option value="1" >1 - I put off making decisions more than I used to.</option>
+						<option value="2" >2 - I have greater difficulty in making decisions more than I used to. </option>
+						<option value="3" >3 - I can't make decisions at all anymore. </option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					How do you feel about your appearance?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-14" class="browser-default sel-mar">
+						<option value="0" selected>0 - I don't feel that I look any worse than I used to.</option>
+						<option value="1" >1 - I am worried that I am looking old or unattractive. </option>
+						<option value="2" >2 - I feel there are permanent changes in my appearance that make me look  unattractive</option>
+						<option value="3" >3 - I believe that I look ugly.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Are you able to focus on work?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-15" class="browser-default sel-mar">
+						<option value="0" selected>0 - I can work about as well as before.</option>
+						<option value="1" >1 - It takes an extra effort to get started at doing something.</option>
+						<option value="2" >2 - I have to push myself very hard to do anything.</option>
+						<option value="3" >3 - I can't do any work at all.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you get ample sleep?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-16" class="browser-default sel-mar">
+						<option value="0" selected>0 - I can sleep as well as usual.</option>
+						<option value="1" >1 - I don't sleep as well as I used to. </option>
+						<option value="2" >2 - I wake up 1-2 hours earlier than usual and find it hard to get back to sleep. </option>
+						<option value="3" >3 - I wake up several hours earlier than I used to and cannot get back to sleep.
+						</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you feel lethargic/tired ?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-17" class="browser-default sel-mar">
+						<option value="0" selected>0 - I don't get more tired than usual.</option>
+						<option value="1" >1 - I get tired more easily than I used to.</option>
+						<option value="2" >2 - I get tired from doing almost anything.</option>
+						<option value="3" >3 - I am too tired to do anything.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					How is your appetite?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-18" class="browser-default sel-mar">
+						<option value="0" selected>0 - My appetite is no worse than usual.</option>
+						<option value="1" >1 - My appetite is not as good as it used to be.</option>
+						<option value="2" >2 - My appetite is much worse now.</option>
+						<option value="3" >3 - I have no appetite at all anymore.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Have you lost weight?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-19" class="browser-default sel-mar">
+						<option value="0" selected>0 - I haven't lost much weight, if any, lately.</option>
+						<option value="1" >1 - I have lost more than five pounds/ two kgs.</option>
+						<option value="2" >2 - I have lost more than ten pounds/ four and a half kgs</option>
+						<option value="3" >3 - I have lost more than fifteen pounds/ seven kgs.</option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Are you worried about your general helath?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-20" class="browser-default sel-mar">
+						<option value="0" selected>0 - I am no more worried about my health than usual.</option>
+						<option value="1" >1 - I am worried about physical problems like aches, pains, upset stomach, or  constipation.</option>
+						<option value="2" >2 - I am very worried about physical problems and it's hard to think of much else.</option>
+						<option value="3" >3 - I am so worried about my physical problems that I cannot think of anything else. </option>
+					</select>
+				</div>
+				<h6 class="col s8">
+					Do you still have the same opinion about sex?
+				</h6>
+				<div class="col s4">
+					<select id="bdi-21" class="browser-default sel-mar">
+						<option value="0" selected>0 - I have not noticed any recent change in my interest in sex.</option>
+						<option value="1" >1 - I am less interested in sex than I used to be.</option>
+						<option value="2" >2 - I have almost no interest in sex. </option>
+						<option value="3" >3 - I have lost interest in sex completely.</option>
+					</select>
+				</div>
+				<div class="center-align col s12">
+					<button class="waves-effect waves-light btn-large pink darken-3 right-align" id="bdi-analyze">
+						<b>Analyse</b>
+					</button>
+				</div>
+				<div class="center-align col s12">
+					<h6 id="bdi-msg"></h6>
+				</div>
+			</div>
+		</div>
+		<div class="container right-align">
+			<button class="waves-effect waves-light btn-large pink darken-3 right-align" id="bdi-home">
+				<b>Go Home</b>
+			</button>
+		</div>
+	</div>
+	<div id="madrs-content" style="display: none">
+		<div class="container white-text" id="madrs-con">
+			<h4>Answer questions based on how you feel</h4>
+			<div class="row">
+				<div class="col s8">
+					<h6>Apparent Sadness</h6> - Representing despondency, gloom and despair, (more than just ordinary transient low spirits) reflected in speech, facial expression, and posture. 
+				</div>
+				<div class="col s4 m1">
+					<select id="madrs-1" class="browser-default sel-mar">
+						<option value="0" selected>0 - No sadness</option>
+						<option value="1">1</option>
+						<option value="2">2 - Looks dispirited but does brighten up without difficulty. </option>
+						<option value="3">3</option>
+						<option value="4">4 - Appears sad and unhappy most of the time. </option>
+						<option value="5">5</option>
+						<option value="6">6 - Looks miserable all the time. Extremely despondent. </option>
+					</select>
+				</div>
+				<div class="col s8">
+					<h6>Reported sadness</h6> - Representing reports of depressed mood, regardless of whether it is reflected in appearance or not. Includes low spirits, despondency or the feeling of being beyond help and without hope
+				</div>
+				<div class="col s4">
+					<select id="madrs-2" class="browser-default sel-mar">
+						<option value="0" selected>0 - Occasional sadness in keeping with the circumstances. </option>
+						<option value="1">1</option>
+						<option value="2">2 - Sad or low but brightens up without difficulty.</option>
+						<option value="3">3</option>
+						<option value="4">4 - Pervasive feelings of sadness or gloominess. The mood is still influenced by external circumstances. </option>
+						<option value="5">5</option>
+						<option value="6">6 - Continuous or unvarying sadness, misery or despondency.</option>
+					</select>
+				</div>
+				<div class="col s8">
+					<h6>Inner tension</h6> Representing feelings of ill-defined discomfort, edginess, inner turmoil, mental tension mounting to either panic, dread or anguish.
+				</div>
+				<div class="col s4">
+					<select id="madrs-3" class="browser-default sel-mar">
+						<option value="0" selected>0 - Placid. Only fleeting inner tension. </option>
+						<option value="1">1</option>
+						<option value="2">2 - Occasional feelings of edginess and ill defined discomfort. </option>
+						<option value="3">3</option>
+						<option value="4">4 - Continuous feelings of inner tension or intermittent panic which the patient can only master with some difficulty. </option>
+						<option value="5">5</option>
+						<option value="6">6 - Unrelenting dread or anguish. Overwhelming panic</option>
+					</select>
+				</div>
+				<div class="col s8">
+					<h6>Reduced sleep</h6> - Representing the experience of reduced duration or depth of sleep compared to the subject's own normal pattern when well. 
+				</div>
+				<div class="col s4">
+					<select id="madrs-4" class="browser-default sel-mar">
+						<option value="0" selected>0 - Sleeps as usual.</option>
+						<option value="1">1</option>
+						<option value="2">2 - Slight difficulty dropping off to sleep or slightly reduced, light or fitful sleep.</option>
+						<option value="3">3</option>
+						<option value="4">4 - Sleep reduced or broken by at least two hours.</option>
+						<option value="5">5</option>
+						<option value="6">6 - Less than two or three hours sleep</option>
+					</select>
+				</div>
+				<div class="col s8">
+					 <h6>Reduced appetite</h6> - Representing the feeling of a loss of appetite compared with when well. Rate by loss of desire for food or the need to force oneself to eat. 
+				</div>
+				<div class="col s4">
+					<select id="madrs-5" class="browser-default sel-mar">
+						<option value="0" selected>0 - Normal or increased appetite.</option>
+						<option value="1">1</option>
+						<option value="2">2 - Slightly reduced appetite</option>
+						<option value="3">3</option>
+						<option value="4">4 - No appetite. Food is tasteless. </option>
+						<option value="5">5</option>
+						<option value="6">6 - Needs persuasion to eat at all.</option>
+					</select>
+				</div>
+				<div class="col s8">
+					<h6>Concentration Difficulties</h6> - Representing difficulties in collecting one's thoughts mounting to incapacitating lack of concentration.
+				</div>
+				<div class="col s4">
+					<select id="madrs-6" class="browser-default sel-mar">
+						<option value="0" selected>0 - No difficulties in concentrating. </option>
+						<option value="1">1</option>
+						<option value="2">2 - Occasional difficulties in collecting one's thoughts.</option>
+						<option value="3">3</option>
+						<option value="4">4 - Difficulties in concentrating and sustaining thought which reduces ability to read or hold a conversation.</option>
+						<option value="5">5</option>
+						<option value="6">6 - Unable to read or converse without great difficulty.</option>
+					</select>
+				</div>
+				<div class="col s8">
+					<h6>Lassitude</h6> - Representing a difficulty getting started or slowness initiating and performing everyday activities.
+				</div>
+				<div class="col s4">
+					<select id="madrs-7" class="browser-default sel-mar">
+						<option value="0" selected>0 - Hardly any difficulty in getting started. No sluggishness.</option>
+						<option value="1">1</option>
+						<option value="2">2 - Difficulties in starting activities.</option>
+						<option value="3">3</option>
+						<option value="4">4 - Difficulties in starting simple routine activities which are carried out with effort.</option>
+						<option value="5">5</option>
+						<option value="6">6 - Complete lassitude. Unable to do anything without help.</option>
+					</select>
+				</div>
+				<div class="col s8">
+					<h6>Inability to feel </h6> - Representing the subjective experience of reduced interest in the surroundings, or activities that normally give pleasure. The ability to react with adequate emotion to circumstances or people is reduced
+				</div>
+				<div class="col s4">
+					<select id="madrs-8" class="browser-default sel-mar">
+						<option value="0" selected>0 - Normal interest in the surroundings and in other people.</option>
+						<option value="1">1</option>
+						<option value="2">2 - Reduced ability to enjoy usual interests.</option>
+						<option value="3">3</option>
+						<option value="4">4 - Loss of interest in the surroundings. Loss of feelings or friends and acquaintances</option>
+						<option value="5">5</option>
+						<option value="6">6 - The experience of being emotionally paralysed, inability to feel anger, grief or pleasure and a complete or even painful failure to feel for close relatives and friends.</option>
+					</select>
+				</div>
+				<div class="col s8">
+					<h6>Pessimistic thoughts</h6> - Representing the feeling that life is not worth living, that a natural death would be welcome, suicidal thoughts, and preparations for suicide. 
+				</div>
+				<div class="col s4">
+					<select id="madrs-9" class="browser-default sel-mar">
+						<option value="0" selected>0 - No pessimistic thoughts. </option>
+						<option value="1">1</option>
+						<option value="2">2 - Fluctuating ideas of failure, self-reproach or self depreciation.</option>
+						<option value="3">3</option>
+						<option value="4">4 - Persistent self-accusations, or definite but still rational ideas of guilt or sin. Increasingly pessimistic about the future. </option>
+						<option value="5">5</option>
+						<option value="6">6 - Delusions of ruin, remorse or unredeemable sin. Self-accusations which are absurd and unshakable. </option>
+					</select>
+				</div>
+				<div class="col s8">
+					<h6>Suicidal thoughts</h6> - Representing the feeling that life is not worth living, that a natural death would be welcome, suicidal thoughts, and preparations for suicide. 
+				</div>
+				<div class="col s4">
+					<select id="madrs-10" class="browser-default sel-mar">
+						<option value="0" selected>0 - Enjoys life or takes it as it comes.</option>
+						<option value="1">1</option>
+						<option value="2">2 - Weary of life. Only fleeting suicidal thoughts.</option>
+						<option value="3">3</option>
+						<option value="4">4 - Probably better off dead. Suicidal thoughts are common, and suicide is considered as a possible solution, but without specific plans or intention.</option>
+						<option value="5">5</option>
+						<option value="6">6 - Explicit plans for suicide when there is an opportunity. 
+						Active preparation for suicide.</option>
+					</select>
+				</div>					
+				<div class="center-align col s12">
+					<button class="waves-effect waves-light btn-large pink darken-3 right-align" id="madrs-analyze">
+						<b>Analyse</b>
+					</button>
+				</div>
+				<div class="center-align col s12">
+					<h6 id="madrs-msg"></h6>
+				</div>
+			</div>
+		</div>
+		<div class="container right-align">
+			<button class="waves-effect waves-light btn-large pink darken-3 right-align" id="madrs-home">
+				<b>Go Home</b>
+			</button>
+		</div>
+	</div>
+	<div id="console">
+	</div>
+	<script type="text/javascript" src="lib/materialize.min.js"></script>
+	<script type="text/javascript" src="country_helpline.js"></script>
+	<script type="text/javascript" src="popup.js"></script>
+</body>
+</html>
